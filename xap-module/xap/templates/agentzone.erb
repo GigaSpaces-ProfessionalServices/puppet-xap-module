@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+sleep <%= @manager_stabilization_delay %>
+ps -aef | grep -v grep | grep GSA
+if [ ${PIPESTATUS[2]} -gt 0 ]; then
+exit 1
+fi
+<% @zone_data.each do |zone| -%>
+<% for loopvar in 1..zone['count'] -%>
+vmArguments="<%= @common_java_options %> <%= @ext_java_options %> <%= zone['gsc_options'] %>"
+sleep <%= @gsc_creation_delay %>
+curl -X POST --silent --header 'Content-Type: application/json' --header 'Accept: text/plain' -d "{\"host\":\"<%= @nic_address %>\",\"memory\":\"<%= zone['heapsize'] %>\",\"zone\":\"<%= zone['name'] %>\",\"vmArguments\":[\"${vmArguments}\"]}" "http://<%= @xap_mgr %>:<%= @mgt_port %>/v2/containers"
+<% end -%>
+<% end -%>
+exit 0

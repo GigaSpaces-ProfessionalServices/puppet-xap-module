@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+DATE_SUFFIX=$(date +%Y-%m-%d-%H-%M-%S)
+ps -aef | grep -v grep | grep GSA
+if [ ${PIPESTATUS[2]} -eq 0 ]; then
+exit 1
+fi
+nohup <%= @xap_home %>/bin/gs-agent.sh --manager gsa.gsc 0 &> <%= @log_dir %>/gs-agent-console-log.${DATE_SUFFIX}.log &
+exit 0

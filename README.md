@@ -1,1 +1,1 @@
-# puppet-xap-module
+# puppet-xap-moduleThis repository has source code for **xap module for Puppet**, and some **example configurations using Hiera**.

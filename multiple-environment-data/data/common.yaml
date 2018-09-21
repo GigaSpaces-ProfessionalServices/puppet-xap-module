@@ -1,0 +1,16 @@
+xap::params::admin_name: 'gsadmin'
+xap::params::admin_group: 'gsadmin'
+xap::params::admin_uid: 1001
+xap::params::admin_gid: 1001
+xap::params::install_dir: '/opt/xap'
+xap::params::package_jdk: 'jdk'
+xap::params::manager_stabilization_delay: 15
+xap::params::gsc_creation_delay: 5
+xap::params::xap_version: 'gigaspaces-insightedge-12.3.0-ga-b19000'
+xap::params::xap_package_dir: '/opt/downloads'
+xap::params::unicast_port: 4174
+xap::params::log_dir: "%{hiera('xap::params::install_dir')}/logs"
+xap::params::mgt_port: 8090
+xap::params::xap_license: 'Product=InsightEdge;Version=12.3;Type=ENTERPRISE;Customer=GigaSpaces_Technologies_-_Internal_Sudip_Bhattacharya_DEV;Expiration=2019-Mar-26;Hash=SQMVApUSReQM6gOyRgtN'
+xap::params::common_java_options: "-server -Dcom.gigaspaces.logger.RollingFileHandler.filename-pattern=%{hiera('xap::params::install_dir')}/logs/{date,yyyy-MM-dd~HH.mm}-{service}-{pid}.log -XX:+UseCompressedOops -Dcom.gs.multicast.enabled=false"
+xap::params::ext_java_options: '-Dcom.gs.security.enabled=false'

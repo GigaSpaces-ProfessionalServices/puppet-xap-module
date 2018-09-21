@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+sleep <%= @manager_server_stabilization_delay %> && echo initial sleep to allow manager server to stabilize ...
+<% @zone_data.each do |zone| -%>
+<% for loopvar in 1..zone['count'] -%>
+vmArguments="<%= @common_java_options %> <%= @ext_java_options %> <%= zone['gsc_options'] %>" && sleep <%= @gsc_creation_delay %> && curl -X POST --header 'Content-Type: application/json' --header 'Accept: text/plain' -d "{\"host\":\"<%= @nic_address %>\",\"memory\":\"<%= zone['heapsize'] %>\",\"zone\":\"<%= zone['name'] %>\",\"vmArguments\":[\"${vmArguments}\"]}" "http://<%= @xap_mgr %>:<%= @mgt_port %>/v2/containers" && echo started GSC for [<%= zone['name'] %>] zone 
+<% end -%>
+<% end -%>

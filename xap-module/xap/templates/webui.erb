@@ -1,0 +1,4 @@
+#!/bin/sh
+export JAVA_OPTIONS="-Xmx256m -Xms256m"
+DATE_SUFFIX=$(date +%Y-%m-%d-%H-%M-%S)
+nohup <%= @xap_home %>/bin/gs-webui.sh &> <%= @log_dir %>/gs-webui-console-log.${DATE_SUFFIX}.log &

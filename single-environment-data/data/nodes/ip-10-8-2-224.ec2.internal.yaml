@@ -1,0 +1,20 @@
+xap::params::host_name: 'ip-10-8-2-224.ec2.internal'
+
+xap::params::node_type: 'manager'
+
+xap::params::webui_execution: true
+
+xap::params::xap_manager_servers: 'ip-10-8-2-224.ec2.internal'
+xap::params::lookup_locators: 'ip-10-8-2-224.ec2.internal'
+xap::params::lookup_group: 'xap-lookahead'
+xap::params::xap_mgr: 'ip-10-8-2-224.ec2.internal'
+
+xap::params::zone_data_for_node:
+  - name: 'z1'
+    count: 2
+    heapsize: '64m'
+    gsc_options: '-Dprofile=p1'
+  - name: 'z2'
+    count: 2
+    heapsize: '48m'
+    gsc_options: '-Dprofile=p2'
